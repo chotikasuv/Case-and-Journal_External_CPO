@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SSPO Case &amp; Journal Conference</title>
+<meta name="description" content="SSPO Case &amp; Journal Conference 2026–2027: monthly case and research presentations in prosthetics and orthotics. Year plan, registration (Zoom link and CPD), attendance and LINE updates.">
+<meta property="og:title" content="SSPO Case &amp; Journal Conference 2026–2027">
+<meta property="og:description" content="Monthly case and research presentations in prosthetics and orthotics. Register to get the Zoom link and request CPD credits.">
+<meta property="og:image" content="images/year-plan-2026-2027.jpg">
+<link rel="icon" type="image/png" href="images/cj-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: follows the Year Plan poster — indigo board, orange date tiles, yellow team labels. Next session up top, then register, year plan, attendance & CPD. */
+:root{
+  --bg:#f4f4fc; --surface:#ffffff; --ink:#2a3678; --muted:#5f6389; --line:#dddcef;
+  --brand:#5a57e8; --tile:#e8461e; --tile-ink:#ffffff; --label:#ffe25a; --label-ink:#24245c; --soft:#ece9fb; --ok:#1f8a4c; --wait:#b4690e;
+  --t-special:#7a4fb3; --t-ped:#d0751a; --t-orth:#11867f; --t-so:#c03b62; --t-cepo:#5d8a1f; --t-pros:#2f6fb0;
+  --display:"Bai Jamjuree","IBM Plex Sans Thai",system-ui,sans-serif;
+  --body:"IBM Plex Sans Thai",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#13132b; --surface:#1c1c3b; --ink:#ecebff; --muted:#a6a6cf; --line:#2f2f58;
+  --brand:#9d92ff; --tile:#f0603a; --tile-ink:#ffffff; --label:#ffe25a; --label-ink:#24245c; --soft:#27264f; --ok:#5fd18e; --wait:#f2b25c;
+  --t-special:#b190e0; --t-ped:#e8a45c; --t-orth:#4fc7bd; --t-so:#ec7d9c; --t-cepo:#a8cf66; --t-pros:#7fb1e6;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#13132b; --surface:#1c1c3b; --ink:#ecebff; --muted:#a6a6cf; --line:#2f2f58;
+  --brand:#9d92ff; --tile:#f0603a; --tile-ink:#ffffff; --label:#ffe25a; --label-ink:#24245c; --soft:#27264f; --ok:#5fd18e; --wait:#f2b25c;
+  --t-special:#b190e0; --t-ped:#e8a45c; --t-orth:#4fc7bd; --t-so:#ec7d9c; --t-cepo:#a8cf66; --t-pros:#7fb1e6;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.6;padding-inline:16px;padding-block:28px 56px}
+.wrap{max-width:980px;margin:0 auto;display:grid;gap:44px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;line-height:1.2}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+header{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+header .htext{display:grid;gap:8px;min-width:0}
+.logo{width:112px;height:112px;border-radius:20px;background:#fff;border:1px solid var(--line);padding:6px}
+@media (max-width:560px){header{grid-template-columns:1fr}.logo{width:88px;height:88px}}
+header h1{font-size:clamp(28px,5vw,44px);font-weight:700}
+header h1 span{color:var(--tile)}
+header p{margin:0;color:var(--muted);max-width:62ch}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}
+.sec-head h2{font-size:22px}
+.sec-head p{margin:0;color:var(--muted);font-size:14px}
+
+/* Next + register */
+.top{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.top .next{grid-column:1/-1}
+@media (max-width:760px){.top{grid-template-columns:1fr}}
+.line{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;min-width:0}
+.line img{width:132px;height:132px;background:#fff;border-radius:10px;padding:4px}
+.line h2{font-size:20px;margin-bottom:6px}
+.line p{margin:0 0 4px;font-size:14px;color:var(--muted)}
+.line .btn.line-btn{background:#06c755;color:#fff;font-size:15px;padding:10px 16px;margin-top:8px}
+.line .url{display:block;margin-top:6px;color:var(--muted);opacity:1}
+@media (max-width:420px){.line{grid-template-columns:1fr}}
+.next{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;min-width:0}
+.datebox{background:var(--tile);color:var(--tile-ink);border-radius:12px;padding:14px 18px;text-align:center;min-width:104px}
+.datebox .d{font-family:var(--display);font-size:46px;font-weight:700;line-height:1}
+.datebox .m{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.next h2{font-size:24px;margin-top:4px}
+.facts{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:8px;color:var(--muted);font-size:14px}
+.facts b{color:var(--ink);font-weight:600}
+.countdown{display:inline-block;margin-top:12px;background:var(--label);color:var(--label-ink);border-radius:999px;padding:3px 12px;font-size:13px;font-weight:600}
+@media (max-width:520px){.next{grid-template-columns:1fr}.datebox{justify-self:start}}
+.talks{grid-column:1/-1;margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;counter-reset:t}
+.talks li{background:var(--soft);border-radius:12px;padding:14px 16px 14px 48px;position:relative;counter-increment:t;min-width:0}
+.talks li::before{content:counter(t);position:absolute;left:14px;top:14px;width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;font-weight:700;font-size:13px;display:grid;place-items:center}
+.talks .tt{font-family:var(--display);font-weight:600;font-size:16px;line-height:1.35}
+.talks .sp{margin-top:6px;font-size:14px;color:var(--muted)}
+.talks .sp span{color:var(--ink);font-weight:600}
+.art{grid-column:1/-1;width:100%;max-width:100%;height:auto;border-radius:12px;display:block}
+.register{background:var(--brand);color:#fff;border-radius:16px;padding:24px;display:grid;gap:12px;align-content:start;min-width:0}
+.register h2{font-size:22px;color:#fff}
+.register p{margin:0;font-size:14px;opacity:.9}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;background:var(--label);color:var(--label-ink);font-family:var(--display);font-weight:700;font-size:16px;text-decoration:none;border-radius:10px;padding:12px 18px}
+.btn:hover{filter:brightness(1.05)}
+.btn:focus-visible,.chip:focus-visible,.month:focus-visible{outline:3px solid var(--tile);outline-offset:2px}
+.url{font-family:var(--mono);font-size:11.5px;word-break:break-all;opacity:.75;user-select:all}
+
+/* Year plan grid */
+/* Poster look: purple board, orange tiles with white borders, yellow labels, slight tilt */
+.plan{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:20px;padding:26px;border-radius:22px;
+  background:linear-gradient(135deg,#56309f 0%,#40309c 45%,#2a3a92 100%);box-shadow:0 10px 30px rgba(40,30,110,.25)}
+.plan{--plan:#f1542a;--plan-deep:#e4471f;--plan-label:#ffd83d;--plan-label-ink:#24245c}
+.tile{background:linear-gradient(160deg,var(--plan),var(--plan-deep));color:#fff;border:3px solid #fff;border-radius:16px;padding:12px 14px 0;display:grid;grid-template-rows:auto auto 1fr;overflow:hidden;position:relative;box-shadow:0 6px 14px rgba(15,10,60,.35);transform:rotate(-1.2deg)}
+.tile:nth-child(even){transform:rotate(1deg)}
+.tile:nth-child(3n){transform:rotate(-.5deg)}
+@media (prefers-reduced-motion:reduce){.tile,.tile:nth-child(n){transform:none}}
+@media (max-width:420px){.plan{padding:16px;gap:16px}}
+.tile .top-row{display:flex;justify-content:space-between;align-items:start}
+.tile .num{width:26px;height:26px;border-radius:50%;background:#fff;color:var(--plan);font-weight:700;display:grid;place-items:center;font-size:14px}
+.tile .day{font-family:var(--display);font-size:40px;font-weight:700;line-height:1}
+.tile .mon{text-align:right;font-size:14px;margin:4px 0 10px}
+.tile .team{background:linear-gradient(90deg,#ffd83d 0%,#ffe88a 55%,#fff8dc 100%);color:var(--plan-label-ink);margin:0 -14px;padding:8px 14px;font-weight:600;font-size:14px;align-self:end}
+.tile.past{opacity:.5}
+.tile.is-next{box-shadow:0 0 0 4px #ffd83d,0 8px 22px rgba(15,10,60,.45)}
+.tile .badge{position:absolute;top:12px;left:44px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#ffd83d;color:var(--plan-label-ink);border-radius:999px;padding:2px 8px}
+.poster{margin-top:16px}
+.poster summary{cursor:pointer;color:var(--brand);font-weight:600}
+.poster img{display:block;margin-top:12px;max-width:min(520px,100%);border-radius:12px;border:1px solid var(--line)}
+
+/* Attendance & CPD */
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip.has{border-color:var(--brand)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:16px;min-width:0}
+.att-info{display:grid;gap:4px}
+.att-info .tt{font-family:var(--display);font-weight:600;font-size:18px;line-height:1.35}
+.att-info .sp{font-size:14px;color:var(--muted)}
+.att-info .sp b{color:var(--ink);font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:640px}
+@media (max-width:520px){.stats{grid-template-columns:1fr}}
+.stat{background:var(--soft);border-radius:10px;padding:12px 14px}
+.stat .v{font-family:var(--display);font-size:26px;font-weight:700;color:var(--ink)}
+.stat .v.none{color:var(--muted)}
+.stat .v.wait{color:var(--wait);font-size:20px}
+.stat .k{font-size:13px;color:var(--muted)}
+.table-wrap{overflow-x:auto;max-height:520px;overflow-y:auto;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--surface)}
+td.yes{color:var(--ok);font-weight:600}
+td.na{color:var(--muted)}
+td.wait span{display:inline-block;background:var(--soft);color:var(--wait);border-radius:999px;padding:1px 10px;font-size:12.5px;font-weight:600}
+.empty td{color:var(--muted);text-align:center;padding:28px 12px;white-space:normal}
+.privacy{margin:0;font-size:13px;color:var(--muted)}
+.soon{display:inline-block;background:var(--label);color:var(--label-ink);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+
+/* Info */
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+.info h3{font-size:17px;margin-bottom:8px}
+.info ul{margin:0;color:var(--muted);padding-left:18px;display:grid;gap:4px}
+.info li b{color:var(--ink)}
+.teams{list-style:none;padding:0!important;display:grid;gap:8px}
+.teams li{display:flex;gap:10px;align-items:baseline}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--c);flex:none}
+footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:16px}
+@media (prefers-reduced-motion:no-preference){.btn{transition:filter .15s}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img class="logo" src="images/cj-logo.png" alt="SSPO C&amp;J logo" width="112" height="112">
+    <div class="htext">
+      <div class="eyebrow">Sirindhorn School of Prosthetics and Orthotics · Siriraj</div>
+      <h1>Case &amp; Journal Conference <span>2026–2027</span></h1>
+      <p>การนำเสนอกรณีศึกษาและงานวิจัย — a monthly session where SSPO teams and invited speakers share clinical cases and new research in prosthetics and orthotics.</p>
+    </div>
+  </header>
+
+  <div class="top">
+    <section class="next" id="next" aria-label="Next session"></section>
+    <section class="register" aria-labelledby="rh">
+      <h2 id="rh">Register to attend</h2>
+      <p id="regnote">ลงทะเบียนเพื่อรับลิงก์ Zoom · Register to receive the Zoom link. You can request CPD credits (P&amp;O) on the same form.</p>
+      <a class="btn" id="regbtn" href="https://bit.ly/SSPOCJ102026" target="_blank" rel="noopener">Register now ↗</a>
+      <span class="url" id="regurl">https://bit.ly/SSPOCJ102026</span>
+    </section>
+    <section class="line" aria-labelledby="lh">
+      <img src="images/line-qr.jpg" alt="QR code to add the SSPO LINE Official Account as a friend" width="132" height="132">
+      <div>
+        <h2 id="lh">Add us on LINE</h2>
+        <p>เพิ่มเพื่อน LINE Official Account เพื่อรับข่าวสาร ลิงก์ Zoom และรายละเอียดของแต่ละครั้ง</p>
+        <p>Scan the code with the LINE app, or tap the button on your phone.</p>
+        <a class="btn line-btn" href="https://lin.ee/ztCXGqd" target="_blank" rel="noopener">Add friend on LINE ↗</a>
+        <span class="url">https://lin.ee/ztCXGqd</span>
+      </div>
+    </section>
+  </div>
+
+  <section aria-labelledby="yh">
+    <div class="sec-head">
+      <h2 id="yh">Year Plan · Oct 2026 – Sep 2027</h2>
+      <p>10 sessions · Wednesdays <span class="mono">13:30–15:00</span></p>
+    </div>
+    <div class="plan" id="plan"></div>
+    <details class="poster">
+      <summary>View the Year Plan poster</summary>
+      <img src="images/year-plan-2026-2027.jpg" alt="Year Plan poster, Case and Journal Conference October 2026 to September 2027, with the LINE Official Account QR code" loading="lazy">
+    </details>
+  </section>
+
+  <section aria-labelledby="ah">
+    <div class="sec-head">
+      <h2 id="ah">Attendance &amp; CPD</h2>
+      <div class="chips" id="chips" role="group" aria-label="Choose a session"></div>
+    </div>
+    <div class="panel">
+      <div class="att-info" id="attinfo"></div>
+      <div class="stats">
+        <div class="stat"><div class="v mono" id="stP">—</div><div class="k">Participants</div></div>
+        <div class="stat"><div class="v mono" id="stC">—</div><div class="k">Received CPD</div></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>No.</th><th>ID</th><th>Name</th><th>Attended</th><th>CPD</th></tr></thead>
+          <tbody id="attbody"></tbody>
+        </table>
+      </div>
+      <p class="privacy">Sorted by ID number. Surnames are shortened to protect privacy; find your row by your ID number.</p>
+    </div>
+  </section>
+
+  <section class="info">
+    <div>
+      <h3>When &amp; where</h3>
+      <ul>
+        <li><b>Second Wednesday</b> of the month, <span class="mono">13:30–15:00</span> (Bangkok time)</li>
+        <li>SSPO lecture room; some sessions are also on Zoom. Each session's format is announced beforehand.</li>
+        <li>If the date falls on a public holiday, the session moves to the following Wednesday.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Presenting teams</h3>
+      <ul class="teams" id="teamlist"></ul>
+    </div>
+    <div>
+      <h3>Attending</h3>
+      <ul>
+        <li>Open to SSPO staff, prosthetists and orthotists from other institutions, and alumni.</li>
+        <li>External participants join on Zoom; the link is sent after you register. SSPO staff attend on-site.</li>
+        <li>Announcements and Zoom links go out on the SSPO LINE Official Account (QR code above).</li>
+        <li>No registration fee.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>Organised by the Academic &amp; International Relations team, SSPO. Schedule may change; the announcement for each session is the final word.</footer>
+</div>
+
+<script>
+const TEAMS = {
+  special:{name:"Special Topic", th:"หัวข้อพิเศษ / วิทยากรรับเชิญ", c:"--t-special"},
+  ped:{name:"Pedorthics Team", th:"แผ่นรองเท้า / รองเท้าเพื่อสุขภาพ", c:"--t-ped"},
+  pros:{name:"Prosthesis Team", th:"กายอุปกรณ์เทียม", c:"--t-pros"},
+  cepo:{name:"CEPO Team", th:"CEPO", c:"--t-cepo"},
+  so:{name:"Spinal Orthosis Team", th:"กายอุปกรณ์เสริมประคองหลัง", c:"--t-so"},
+  orth:{name:"Orthosis Team", th:"กายอุปกรณ์เสริม", c:"--t-orth"}
+};
+const SESSIONS = [
+  {date:"2026-10-14", team:"special", mode:"Hybrid",
+   venue:"On-site at SSPO, Lecture Room B–C · Online via Zoom",
+   art:"images/cj-2026-10.jpg", reg:"https://bit.ly/SSPOCJ102026",
+   talks:[
+     {title:"Biomechanic Analysis of Load Asymmetry in Unilateral Transtibial Prosthesis Users with Manual Lock Knee as an Ankle Joint During Sit-to-Stand and Lifting", speaker:"Mr. Tatjirat Phothipakraksa", nick:"Peem"},
+     {title:"The Effects of Transfemoral Lateral Brim to the Stability, Specific Force Acting on the Socket, and Socket Comfort", speaker:"Mr. Nattapon Limrattanakan", nick:"Pangpond"}
+   ]},
+  {date:"2026-11-11", team:"special"},
+  {date:"2026-12-09", team:"special"},
+  {date:"2027-01-13", team:"special"},
+  {date:"2027-02-10", team:"ped"},
+  {date:"2027-05-12", team:"pros"},
+  {date:"2027-06-09", team:"cepo"},
+  {date:"2027-07-14", team:"so"},
+  {date:"2027-08-11", team:"orth"},
+  {date:"2027-09-08", team:"special"}
+];
+/* Attendance per session. Names are stored already shortened (first name + first letter of surname).
+   cpd: null = CPD still being processed ("On process"); {credits:N} once confirmed, with row[2]=true for each person who received it. */
+const ATTENDANCE = {
+  "2026-09-09": {
+    series:"2025–2026",
+    title:"Road to Publication: The ASEAN Journal of Rehabilitation Medicine (ASEAN J Rehabil Med)",
+    speaker:"Assoc. Prof. Kingkaew Pajareya, MD (รศ.พญ.กิ่งแก้ว ปาจรีย์)",
+    org:"Department of Rehabilitation Medicine, Faculty of Medicine Siriraj Hospital",
+    cpd:null,
+    rows:[["320", "กัลยารัตน์ ป."], ["342", "เอกวัฒน์ ว."], ["344", "ธนกร ส."], ["312", "มนตรี ซ."], ["353", "สมเกียรติ ค."], ["387", "ณัฐวรา ต."], ["402", "ฮานาน โต."], ["293", "ธนวัฒน์ แช."], ["285", "กมลักษณ์ ก."], ["288", "ฉัตรวิมล ใจ."], ["385", "ชลิดา ร."], ["307", "กุสุมา ส."], ["339", "หิรัญ ห."], ["324", "ณัฐศักดิ์ ว."], ["400", "สกุลกาญจน์ อ."], ["375", "ประภารัตน์ โก."], ["391", "นภัสกร แก."], ["340", "อรุณโรจน์ ว."], ["388", "ณิชาภัทร ว."], ["378", "ณัฐสินี ช."], ["345", "ชาลิสา ช."], ["300", "มานะ โล."], ["360", "กฤติพร ช."], ["383", "ธนัท อ."], ["278", "ศกลวรรณ ช."], ["395", "พงศ์วุฒิชัย น."], ["289", "ณญาดา ช."], ["389", "ธวัลรัตน์ อ."], ["279", "ศลุตตรา ก."], ["277", "วัชรีพร ส."], ["401", "อานนท์ บ."], ["337", "สโรชา เจ."], ["372", "ธราธร ส."], ["393", "ปริษา ว."], ["311", "พิชญา พ."], ["384", "ชนกนันท์ ห."]]
+  }
+};
+const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const MONFULL=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const now=new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Bangkok"}));
+const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+const parse=s=>{const[y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)};
+const next=SESSIONS.find(s=>parse(s.date)>=today);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* Registration: use the next session's own link; until it's set, show the general form */
+(function(){
+  const GENERAL="https://docs.google.com/forms/d/e/1FAIpQLSeYKiabOsWoXpMuJNnMxBXdq29-ft7MG8d8x6wBoUfUS8QSuA/viewform";
+  const url=(next&&next.reg)||GENERAL;
+  document.getElementById("regbtn").href=url;
+  document.getElementById("regurl").textContent=url;
+  if(next&&next.reg){const d=parse(next.date);document.getElementById("rh").textContent=`Register for ${d.getDate()} ${MONFULL[d.getMonth()]}`;}
+})();
+(function renderNext(){
+  const el=document.getElementById("next");
+  if(!next){el.innerHTML=`<div><div class="eyebrow">Next session</div><h2>The 2026–2027 series has finished.</h2></div>`;return}
+  const d=parse(next.date),t=TEAMS[next.team],n=SESSIONS.indexOf(next)+1;
+  const days=Math.round((d-today)/864e5);
+  const cd=days===0?"Today":days===1?"Tomorrow":`In ${days} days`;
+  el.innerHTML=`<div class="datebox"><div class="m">${MON[d.getMonth()]}</div><div class="d mono">${String(d.getDate()).padStart(2,"0")}</div><div class="m">Wed</div></div>
+  <div><div class="eyebrow">Next session · No. ${n} · ${t.name}</div><h2>${next.talks?`${next.talks.length} presentations`:t.name}</h2>
+  <div class="facts"><span><b>Date:</b> ${d.getDate()} ${MONFULL[d.getMonth()]} ${d.getFullYear()}</span><span><b>Time:</b> <span class="mono">13:30–15:00</span></span>${next.mode?`<span><b>Format:</b> ${next.mode}</span>`:""}${next.venue?`<span><b>Where:</b> ${next.venue}</span>`:""}</div>
+  <span class="countdown">${cd}</span></div>
+  ${next.talks?`<ol class="talks">${next.talks.map(k=>`<li><div class="tt">${k.title}</div><div class="sp">${k.speaker}${k.nick?` <span>(${k.nick})</span>`:""}</div></li>`).join("")}</ol>`:""}
+  ${next.art?`<img class="art" src="${next.art}" alt="Session poster for ${MONFULL[d.getMonth()]} ${d.getFullYear()}">`:""}`;
+})();
+
+document.getElementById("plan").innerHTML=SESSIONS.map((s,i)=>{
+  const d=parse(s.date),past=d<today,isNext=s===next;
+  return `<div class="tile${past?" past":""}${isNext?" is-next":""}">
+    <div class="top-row"><span class="num">${i+1}</span><span class="day mono">${String(d.getDate()).padStart(2,"0")}</span></div>
+    ${isNext?`<span class="badge">Next</span>`:""}
+    <div class="mon">${MONFULL[d.getMonth()]}, ${d.getFullYear()}</div>
+    <div class="team">${TEAMS[s.team].name}</div></div>`;
+}).join("");
+
+/* Attendance chips: past sessions with records first, then this year's plan */
+const ATT_DATES=[...new Set([...Object.keys(ATTENDANCE),...SESSIONS.map(s=>s.date)])].sort();
+const withData=Object.keys(ATTENDANCE).sort();
+let sel=null;
+try{sel=localStorage.getItem("cj-att2")}catch(e){}
+if(!ATT_DATES.includes(sel))sel=withData[withData.length-1]||(next||SESSIONS[SESSIONS.length-1]).date;
+function setStat(id,v,cls){const el=document.getElementById(id);el.textContent=v;el.classList.toggle("none",v==="—");el.classList.toggle("wait",cls==="wait")}
+function renderAtt(){
+  document.getElementById("chips").innerHTML=ATT_DATES.map(ds=>{const d=parse(ds);return `<button class="chip${ATTENDANCE[ds]?" has":""}" data-d="${ds}" aria-pressed="${ds===sel}">${MON[d.getMonth()]} ${String(d.getFullYear()).slice(2)}</button>`}).join("");
+  const d=parse(sel),a=ATTENDANCE[sel],info=document.getElementById("attinfo"),body=document.getElementById("attbody");
+  const label=`${d.getDate()} ${MONFULL[d.getMonth()]} ${d.getFullYear()}`;
+  if(!a){
+    info.innerHTML=`<div class="eyebrow">${label}</div>`;
+    setStat("stP","—");setStat("stC","—");
+    body.innerHTML=`<tr class="empty"><td colspan="5">The participant list and CPD results for ${MONFULL[d.getMonth()]} ${d.getFullYear()} will appear here after the session. <span class="soon">Coming soon</span></td></tr>`;
+    return;
+  }
+  const rows=[...a.rows].sort((x,y)=>Number(x[0])-Number(y[0]));
+  info.innerHTML=`<div class="eyebrow">${label}${a.series?` · ${a.series} series`:""}</div><div class="tt">${esc(a.title)}</div><div class="sp"><b>${esc(a.speaker)}</b><br>${esc(a.org)}</div>`;
+  setStat("stP",String(rows.length));
+  if(a.cpd){setStat("stC",String(rows.filter(r=>r[2]).length));}
+  else{setStat("stC","On process","wait");}
+  body.innerHTML=rows.map((r,i)=>`<tr><td class="mono">${i+1}</td><td class="mono">${esc(r[0])}</td><td>${esc(r[1])}</td><td class="yes">✓</td>${a.cpd?`<td class="${r[2]?"yes":"na"}">${r[2]?"✓":"—"}</td>`:`<td class="wait"><span>On process</span></td>`}</tr>`).join("");
+}
+document.getElementById("chips").onclick=e=>{const b=e.target.closest(".chip");if(!b)return;sel=b.dataset.d;try{localStorage.setItem("cj-att2",sel)}catch(e){}renderAtt()};
+renderAtt();
+
+document.getElementById("teamlist").innerHTML=Object.values(TEAMS).map(t=>`<li><span class="dot" style="--c:var(${t.c})"></span><span><b>${t.name}</b><br>${t.th}</span></li>`).join("");
+</script>
+</body>
+</html>
