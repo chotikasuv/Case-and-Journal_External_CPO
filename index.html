@@ -173,6 +173,8 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
 .rec-topic{font-family:var(--display);font-weight:600;font-size:16.5px;line-height:1.35}
 .rec-speakers{display:flex;flex-wrap:wrap;gap:6px}
 .rec-speakers span{background:var(--soft);border-radius:999px;padding:2px 10px;font-size:13px;color:var(--ink)}
+.rec-att{justify-self:start;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;background:var(--soft);border-radius:999px;padding:3px 12px}
+.rec-att:hover{background:var(--line)}
 .rec-video{justify-self:start;font-size:13px;font-weight:600;color:var(--brand);text-decoration:none;border:1px solid var(--brand);border-radius:999px;padding:3px 12px}
 .rec-card{border-left:5px solid var(--tc,var(--brand))}
 .rec-card.has-img{grid-template-columns:72px minmax(0,1fr) 168px}
@@ -190,6 +192,30 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
 @media (max-width:760px){.rec-card.has-img{grid-template-columns:58px minmax(0,1fr)}.rec-card.has-img .rec-thumb{grid-column:2;max-width:320px}}
 .lightbox[hidden]{display:none}
 #recList{display:grid;gap:32px}
+/* Satisfaction */
+.sat-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:-20px}
+@media (max-width:620px){.sat-stats{grid-template-columns:minmax(0,1fr)}}
+.sat-stats .stat .k b{color:var(--ink)}
+.sat-legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted);margin-top:-24px}
+.sat-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.k-p,.bar-p{background:var(--brand)}
+.k-m,.bar-m{background:var(--tile)}
+.sat-series{display:grid;gap:10px}
+.sat-series h3{font-size:19px;display:flex;align-items:baseline;gap:10px}
+.sat-series h3 small{font-family:var(--body);font-size:13px;font-weight:500;color:var(--muted)}
+#satList{display:grid;gap:32px}
+.sat-when{white-space:nowrap}
+.sat-row{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px;display:grid;grid-template-columns:118px minmax(0,1fr) minmax(0,260px);gap:6px 18px;align-items:center}
+.sat-when{font-family:var(--display);font-weight:700;font-size:16px;font-variant-numeric:tabular-nums}
+.sat-when small{display:block;font-family:var(--body);font-weight:500;font-size:12px;color:var(--muted)}
+.sat-topic{font-size:14.5px;line-height:1.4;min-width:0;overflow-wrap:anywhere}
+.sat-topic.none{color:var(--muted);font-style:italic}
+.sat-bars{display:grid;gap:5px}
+.sat-bar{display:grid;grid-template-columns:minmax(0,1fr) 34px;gap:8px;align-items:center}
+.sat-track{height:10px;border-radius:999px;background:var(--soft);overflow:hidden}
+.sat-track span{display:block;height:100%;border-radius:999px}
+.sat-bar b{font-family:var(--mono);font-size:13px;font-weight:500;text-align:right}
+@media (max-width:620px){.sat-row{grid-template-columns:76px minmax(0,1fr)}.sat-bars{grid-column:1/-1}}
 .rec-empty{color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:24px;text-align:center}
 @media (max-width:520px){.rec-card{grid-template-columns:58px minmax(0,1fr);gap:12px;padding:12px 14px}.rec-date .d{font-size:20px}}
 </style>
@@ -210,6 +236,7 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
     <button class="tab" role="tab" id="tab-conf" aria-controls="page-conf" aria-selected="true" data-page="conf">Conference</button>
     <button class="tab" role="tab" id="tab-att" aria-controls="page-att" aria-selected="false" data-page="att">Attendance &amp; CPD</button>
     <button class="tab" role="tab" id="tab-record" aria-controls="page-record" aria-selected="false" data-page="record">C&amp;J Record</button>
+    <button class="tab" role="tab" id="tab-sat" aria-controls="page-sat" aria-selected="false" data-page="sat">Satisfaction</button>
   </nav>
 
   <div class="page" id="page-conf" role="tabpanel" aria-labelledby="tab-conf">
@@ -316,6 +343,22 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
     <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Session poster"><button type="button" class="lb-close" id="lbClose">Close ✕</button><img id="lbImg" alt=""></div>
   </div>
 
+  <div class="page" id="page-sat" role="tabpanel" aria-labelledby="tab-sat" hidden>
+    <section class="rec-head">
+      <div>
+        <div class="eyebrow">Satisfaction survey</div>
+        <h2>How attendees rated each session</h2>
+        <p>ผลประเมินความพึงพอใจ · Average scores out of 5 from the survey after each session.</p>
+      </div>
+      <a class="btn" href="https://docs.google.com/forms/d/10nRHXMeNqDDusJrshwQswDKEHJKjGuPqlOheJ8cz-M0/viewform" target="_blank" rel="noopener">Give feedback ↗</a>
+    </section>
+    <div class="sat-stats" id="satStats"></div>
+    <div class="sat-legend"><span><i class="k-p"></i>Presentation &amp; activity</span><span><i class="k-m"></i>C&amp;J management</span></div>
+    <div class="chips" id="satChips" role="group" aria-label="Filter by series"></div>
+    <div id="satList"></div>
+    <p class="privacy">From the C&amp;J Satisfaction Survey. Each score is the average of all responses for that session (1 = lowest, 5 = highest). Comments go to the speakers and the C&amp;J team and are not shown here.</p>
+  </div>
+
   <footer>Organised by the Academic &amp; International Relations team, SSPO. Schedule may change; the announcement for each session is the final word.</footer>
 </div>
 
@@ -353,15 +396,20 @@ const SESSIONS = [
 ];
 /* Attendance per session. Names are stored already shortened (first name + first letter of surname).
    cpd: null = CPD still being processed ("On process"); {credits:N} once confirmed, with row[2]=true for each person who received it. */
+/* ID "N/A" = no licence number in the database (recorded as 0). Source: participant database, Sheet2. */
 const ATTENDANCE = {
-  "2026-09-09": {
-    series:"2025–2026",
-    title:"Road to Publication: The ASEAN Journal of Rehabilitation Medicine (ASEAN J Rehabil Med)",
-    speaker:"Assoc. Prof. Kingkaew Pajareya, MD (รศ.พญ.กิ่งแก้ว ปาจรีย์)",
-    org:"Department of Rehabilitation Medicine, Faculty of Medicine Siriraj Hospital",
-    cpd:null,
-    rows:[["320", "กัลยารัตน์ ป."], ["342", "เอกวัฒน์ ว."], ["344", "ธนกร ส."], ["312", "มนตรี ซ."], ["353", "สมเกียรติ ค."], ["387", "ณัฐวรา ต."], ["402", "ฮานาน โต."], ["293", "ธนวัฒน์ แช."], ["285", "กมลักษณ์ ก."], ["288", "ฉัตรวิมล ใจ."], ["385", "ชลิดา ร."], ["307", "กุสุมา ส."], ["339", "หิรัญ ห."], ["324", "ณัฐศักดิ์ ว."], ["400", "สกุลกาญจน์ อ."], ["375", "ประภารัตน์ โก."], ["391", "นภัสกร แก."], ["340", "อรุณโรจน์ ว."], ["388", "ณิชาภัทร ว."], ["378", "ณัฐสินี ช."], ["345", "ชาลิสา ช."], ["300", "มานะ โล."], ["360", "กฤติพร ช."], ["383", "ธนัท อ."], ["278", "ศกลวรรณ ช."], ["395", "พงศ์วุฒิชัย น."], ["289", "ณญาดา ช."], ["389", "ธวัลรัตน์ อ."], ["279", "ศลุตตรา ก."], ["277", "วัชรีพร ส."], ["401", "อานนท์ บ."], ["337", "สโรชา เจ."], ["372", "ธราธร ส."], ["393", "ปริษา ว."], ["311", "พิชญา พ."], ["384", "ชนกนันท์ ห."]]
-  }
+  "2026-03-11": {series:"2025\u20132026", title:"Prosthetic Design", speaker:"Prof. Dr. Peter Gabriel Adamczyk", org:"Prosthesis Team", cpd:null,
+    rows:[["266", "ฐิตา เช."], ["268", "ธนชาติ บ."], ["269", "วรัณรักษ์ ฉ."], ["271", "เพ็ญสุดา ท."], ["272", "ภัทราภรณ์ ก."], ["273", "มธุริน ร."], ["279", "ศลุตตรา ก."], ["280", "สุกฤษฎิ์ ว."], ["282", "หทัยชนก อ."], ["283", "อภินัทธ์ จ."], ["284", "กนกรัตน์ เห."], ["285", "กมลักษณ์ ก."], ["288", "ฉัตรวิมล ใจ."], ["289", "ณญาดา ช."], ["296", "ภรณ์ชลัยย์ บ."], ["297", "ภัณฐิตา อ."], ["302", "วรางคณา ร."], ["306", "กุลนิษฐ์ บ."], ["307", "กุสุมา ส."], ["309", "ปณิธาน เห."], ["312", "มนตรี ซ."], ["313", "มินตรา ส."], ["315", "วิศวภรณ์ เน."], ["316", "สายฝน ท."], ["317", "สิรรัฐ ช."], ["321", "กิตติยา ภ."], ["323", "ญาณิศา เร."], ["324", "ณัฐศักดิ์ ว."], ["329", "ปภาดา บ."], ["332", "รมยกร ร."], ["333", "รินรดา เพ."], ["334", "วนัสดา อ."], ["337", "สโรชา เจ."], ["342", "เอกวัฒน์ ว."], ["343", "พาสุข ส."], ["344", "ธนกร ส."], ["345", "ชาลิสา ช."], ["347", "ณิฐาวริศว์ บ."], ["348", "ภัทรวดี แก."], ["349", "เฉลิมศักดิ์ ศ."], ["351", "ปริณดา ก."], ["353", "สมเกียรติ ค."], ["354", "กนกวรรณ ส."], ["356", "เนตรชนก จ."], ["357", "สุญาศิณี น."], ["358", "สุภาภรณ์ ส."], ["359", "ศศิประภา ต."], ["360", "กฤติพร ช."], ["362", "ชลลดา ต."], ["363", "สัจพร แก."], ["372", "ธราธร ส."], ["375", "ประภารัตน์ โก."], ["376", "สุรพรชัย ธ."], ["378", "ณัฐสินี ช."], ["383", "ธนัท อ."], ["384", "ชนกนันท์ ห."], ["385", "ชลิดา ร."], ["387", "ณัฐวรา ต."], ["389", "ธวัลรัตน์ อ."], ["390", "ธีรดนย์ น."], ["391", "นภัสกร แก."], ["393", "ปริษา ว."], ["394", "ปุณณ์ภัสสรณ์ เต."], ["395", "พงศ์วุฒิชัย น."], ["396", "พชรปพน แต."], ["398", "วิภาวี ณ."], ["400", "สกุลกาญจน์ อ."], ["402", "ฮานาน โต."]]},
+  "2026-04-08": {series:"2025\u20132026", title:"Design and Fabrication of 3D-Printed Custom Insoles Using LutraCAD: Software Workflow, Materials, and Clinical Evidence", speaker:"น.ส.มาริษา อมาตยกุล, นายอภินัทธ์ จิรวัฒนาพันธ์, น.ส.ภัทรวดี แก้วอรัญ", org:"CEPO Team", cpd:null,
+    rows:[["266", "ฐิตา เช."], ["268", "ธนชาติ บ."], ["269", "วรัณรักษ์ ฉ."], ["273", "มธุริน ร."], ["276", "วรกมล ว."], ["280", "สุกฤษฎิ์ ว."], ["282", "หทัยชนก อ."], ["283", "อภินัทธ์ จ."], ["284", "กนกรัตน์ เห."], ["285", "กมลักษณ์ ก."], ["287", "จิรนันท์ จ."], ["288", "ฉัตรวิมล ใจ."], ["289", "ณญาดา ช."], ["292", "ทัชชา ว."], ["296", "ภรณ์ชลัยย์ บ."], ["297", "ภัณฐิตา อ."], ["300", "มานะ โล."], ["301", "ยลดา ต."], ["306", "กุลนิษฐ์ บ."], ["307", "กุสุมา ส."], ["312", "มนตรี ซ."], ["323", "ญาณิศา เร."], ["324", "ณัฐศักดิ์ ว."], ["332", "รมยกร ร."], ["333", "รินรดา เพ."], ["334", "วนัสดา อ."], ["337", "สโรชา เจ."], ["342", "เอกวัฒน์ ว."], ["344", "ธนกร ส."], ["345", "ชาลิสา ช."], ["346", "วรรณวิมล ธ."], ["347", "ณิฐาวริศว์ บ."], ["348", "ภัทรวดี แก."], ["349", "เฉลิมศักดิ์ ศ."], ["351", "ปริณดา ก."], ["353", "สมเกียรติ ค."], ["354", "กนกวรรณ ส."], ["356", "เนตรชนก จ."], ["357", "สุญาศิณี น."], ["359", "ศศิประภา ต."], ["358", "สุภาภรณ์ ส."], ["360", "กฤติพร ช."], ["362", "ชลลดา ต."], ["363", "สัจพร แก."], ["364", "ปุณยวีร์ เท."], ["370", "ธนรัตน์ ค."], ["372", "ธราธร ส."], ["374", "เบญญาภา เพ."], ["377", "อานนท์ ย."], ["378", "ณัฐสินี ช."], ["383", "ธนัท อ."], ["384", "ชนกนันท์ ห."], ["385", "ชลิดา ร."], ["387", "ณัฐวรา ต."], ["390", "ธีรดนย์ น."], ["394", "ปุณณ์ภัสสรณ์ เต."], ["398", "วิภาวี ณ."], ["400", "สกุลกาญจน์ อ."], ["401", "อานนท์ บ."], ["402", "ฮานาน โต."]]},
+  "2026-06-10": {series:"2025\u20132026", title:"Alternative Approaches: Concept of Dynamic Spinal Orthoses", speaker:"นางสาวโชติกา สุวิปาลวัฒน์, นางสาวกุลนิษฐ์ บุญตา, ผศ.ธันยพร รักบางบูรณ์", org:"Spinal Orthosis Team", cpd:null,
+    rows:[["60", "พรสุรีย์ อ."], ["190", "ภรณ์ธิดา ไผ."], ["264", "จุฑาวรรณ ช."], ["266", "ฐิตา เช."], ["271", "เพ็ญสุดา ท."], ["272", "ภัทราภรณ์ ก."], ["273", "มธุริน ร."], ["277", "วัชรีพร ส."], ["279", "ศลุตตรา ก."], ["281", "เสาวภาคย์ ห."], ["282", "หทัยชนก อ."], ["283", "อภินัทธ์ จ."], ["284", "กนกรัตน์ เห."], ["285", "กมลักษณ์ ก."], ["287", "จิรนันท์ จ."], ["288", "ฉัตรวิมล ใจ."], ["289", "ณญาดา ช."], ["293", "ธนวัฒน์ แช."], ["296", "ภรณ์ชลัยย์ บ."], ["297", "ภัณฐิตา อ."], ["299", "โภไคย ก."], ["302", "วรางคณา ร."], ["306", "กุลนิษฐ์ บ."], ["307", "กุสุมา ส."], ["312", "มนตรี ซ."], ["313", "มินตรา ส."], ["315", "วิศวภรณ์ เน."], ["323", "ญาณิศา เร."], ["332", "รมยกร ร."], ["333", "รินรดา เพ."], ["334", "วนัสดา อ."], ["337", "สโรชา เจ."], ["339", "หิรัญ ห."], ["340", "อรุณโรจน์ ว."], ["343", "พาสุข ส."], ["344", "ธนกร ส."], ["345", "ชาลิสา ช."], ["346", "วรรณวิมล ธ."], ["347", "ณิฐาวริศว์ บ."], ["348", "ภัทรวดี แก."], ["351", "ปริณดา ก."], ["353", "สมเกียรติ ค."], ["354", "กนกวรรณ ส."], ["356", "เนตรชนก จ."], ["359", "ศศิประภา ต."], ["358", "สุภาภรณ์ ส."], ["360", "กฤติพร ช."], ["362", "ชลลดา ต."], ["364", "ปุณยวีร์ เท."], ["367", "ฐิตพิชาพร ว."], ["370", "ธนรัตน์ ค."], ["372", "ธราธร ส."], ["374", "เบญญาภา เพ."], ["375", "ประภารัตน์ โก."], ["376", "สุรพรชัย ธ."], ["377", "อานนท์ ย."], ["378", "ณัฐสินี ช."], ["383", "ธนัท อ."], ["384", "ชนกนันท์ ห."], ["385", "ชลิดา ร."], ["387", "ณัฐวรา ต."], ["388", "ณิชาภัทร ว."], ["389", "ธวัลรัตน์ อ."], ["390", "ธีรดนย์ น."], ["393", "ปริษา ว."], ["394", "ปุณณ์ภัสสรณ์ เต."], ["395", "พงศ์วุฒิชัย น."], ["398", "วิภาวี ณ."], ["400", "สกุลกาญจน์ อ."], ["401", "อานนท์ บ."], ["402", "ฮานาน โต."]]},
+  "2026-07-08": {series:"2025\u20132026", title:"Advanced Lower Limb Orthotics for Neuromuscular Patients", speaker:"Mr. Darren Pereira", org:"Director/Principal Orthotist – Adult Neuromuscular Orthotics, Australia", cpd:null,
+    rows:[["23", "ณัฐวรรณ ส."], ["60", "พรสุรีย์ ค."], ["70", "จิณณ์ฐวัตน์ ใจ."], ["266", "ฐิตา เช."], ["269", "วรัณรักษ์ ฉ."], ["271", "เพ็ญสุดา ท."], ["272", "ภัทราภรณ์ ก."], ["273", "มธุริน ร."], ["277", "วัชรีพร ส."], ["278", "ศกลวรรณ ช."], ["279", "ศลุตตรา ก."], ["280", "สุกฤษฎิ์ ว."], ["282", "หทัยชนก อ."], ["283", "อภินัทธ์ จ."], ["284", "กนกรัตน์ เห."], ["285", "กมลักษณ์ ก."], ["287", "จิรนันท์ จ."], ["288", "ฉัตรวิมล ใจ."], ["289", "ณญาดา ช."], ["292", "ทัชชา ว."], ["293", "ธนวัฒน์ แช."], ["295", "พิมลอร ศ."], ["296", "ภรณ์ชลัยย์ บ."], ["297", "ภัณฐิตา อ."], ["299", "โภไคย ก."], ["302", "วรางคณา ร."], ["306", "กุลนิษฐ์ บ."], ["307", "กุสุมา ส."], ["309", "ปณิธาน เห."], ["312", "มนตรี ซ."], ["313", "มินตรา ส."], ["315", "วิศวภรณ์ เน."], ["320", "กัลยารัตน์ ป."], ["323", "ญาณิศา เร."], ["334", "วนัสดา อ."], ["337", "สโรชา เจ."], ["338", "สุพรรณี ส."], ["339", "หิรัญ ห."], ["340", "อรุณโรจน์ ว."], ["342", "เอกวัฒน์ ว."], ["343", "พาสุข ส."], ["344", "ธนกร ส."], ["345", "ชาลิสา ช."], ["346", "วรรณวิมล ธ."], ["348", "ภัทรวดี แก."], ["351", "ปริณดา ก."], ["354", "กนกวรรณ ส."], ["358", "สุภาภรณ์ ส."], ["360", "กฤติพร ช."], ["364", "ปุณยวีร์ เท."], ["367", "ฐิตพิชาพร ว."], ["368", "ฐิติวรรณ น."], ["369", "พัชร์พารัตชา ป."], ["370", "ธนรัตน์ ค."], ["372", "ธราธร ส."], ["374", "เบญญาภา เพ."], ["376", "สุรพรชัย ธ."], ["377", "อานนท์ ย."], ["378", "ณัฐสินี ช."], ["382", "ชนิตา แย."], ["383", "ธนัท อ."], ["384", "ชนกนันท์ ห."], ["387", "ณัฐวรา ต."], ["389", "ธวัลรัตน์ อ."], ["390", "ธีรดนย์ น."], ["391", "นภัสกร แก."], ["393", "ปริษา ว."], ["394", "ปุณณ์ภัสสรณ์ เต."], ["395", "พงศ์วุฒิชัย น."], ["398", "วิภาวี ณ."], ["399", "ศุภกร เป."], ["400", "สกุลกาญจน์ อ."], ["401", "อานนท์ บ."], ["402", "ฮานาน โต."]]},
+  "2026-09-09": {series:"2025\u20132026", title:"Road to Publication: The ASEAN Journal of Rehabilitation Medicine (ASEAN J Rehabil Med)", speaker:"Assoc. Prof. Kingkaew Pajareya, MD (รศ.พญ.กิ่งแก้ว ปาจรีย์)", org:"Department of Rehabilitation Medicine, Faculty of Medicine Siriraj Hospital", cpd:null,
+    rows:[["320", "กัลยารัตน์ ป."], ["342", "เอกวัฒน์ ว."], ["344", "ธนกร ส."], ["312", "มนตรี ซ."], ["353", "สมเกียรติ ค."], ["387", "ณัฐวรา ต."], ["402", "ฮานาน โต."], ["293", "ธนวัฒน์ แช."], ["285", "กมลักษณ์ ก."], ["288", "ฉัตรวิมล ใจ."], ["385", "ชลิดา ร."], ["307", "กุสุมา ส."], ["339", "หิรัญ ห."], ["324", "ณัฐศักดิ์ ว."], ["400", "สกุลกาญจน์ อ."], ["375", "ประภารัตน์ โก."], ["391", "นภัสกร แก."], ["340", "อรุณโรจน์ ว."], ["388", "ณิชาภัทร ว."], ["378", "ณัฐสินี ช."], ["345", "ชาลิสา ช."], ["300", "มานะ โล."], ["360", "กฤติพร ช."], ["383", "ธนัท อ."], ["278", "ศกลวรรณ ช."], ["395", "พงศ์วุฒิชัย น."], ["289", "ณญาดา ช."], ["389", "ธวัลรัตน์ อ."], ["279", "ศลุตตรา ก."], ["277", "วัชรีพร ส."], ["401", "อานนท์ บ."], ["337", "สโรชา เจ."], ["372", "ธราธร ส."], ["393", "ปริษา ว."], ["311", "พิชญา พ."], ["384", "ชนกนันท์ ห."]]},
+  "2026-10-14": {series:"2026\u20132027", title:"2 presentations: Biomechanic Analysis of Load Asymmetry in Unilateral Transtibial Prosthesis Users… · The Effects of Transfemoral Lateral Brim on Stability…", speaker:"Mr. Tatjirat Phothipakraksa (Peem) · Mr. Nattapon Limrattanakan (Pangpond)", org:"Special Topic", cpd:null,
+    rows:[["N/A", "คเณศ เห."], ["N/A", "ธเนศ อ."], ["162", "ศุภรัจน์ บ."], ["264", "จุฑาวรรณ ช."], ["268", "ธนชาติ บ."], ["269", "วรัณรักษ์ ฉ."], ["276", "วรกมล ว."], ["277", "วัชรีพร ส."], ["279", "ศลุตตรา ก."], ["280", "สุกฤษฎิ์ ว."], ["285", "กมลักษณ์ ก."], ["287", "จิรนันท์ จ."], ["288", "ฉัตรวิมล ใจ."], ["289", "ณญาดา ช."], ["292", "ทัชชา ว."], ["297", "ภัณฐิตา อ."], ["300", "มานะ โล."], ["302", "วรางคณา ร."], ["306", "กุลนิษฐ์ บ."], ["307", "กุสุมา ส."], ["308", "ณัฐริกา ว."], ["309", "ปณิธาน เห."], ["311", "พิชญา พ."], ["312", "มนตรี ซ."], ["331", "รมณรัต ร."], ["337", "สโรชา เจ."], ["339", "หิรัญ ห."], ["344", "ธนกร ส."], ["345", "ชาลิสา ช."], ["346", "วรรณวิมล ธ."], ["356", "เนตรชนก จ."], ["360", "กฤติพร ช."], ["367", "ฐิตพิชาพร ว."], ["372", "ธราธร ส."], ["375", "ประภารัตน์ โก."], ["377", "อานนท์ ย."], ["378", "ณัฐสินี ช."], ["379", "สัมฤทธิ์ ค."], ["383", "ธนัท อ."], ["385", "ชลิดา ร."], ["387", "ณัฐวรา ต."], ["388", "ณิชาภัทร ว."], ["389", "ธวัลรัตน์ อ."], ["391", "นภัสกร แก."], ["393", "ปริษา ว."], ["395", "พงศ์วุฒิชัย น."], ["398", "วิภาวี ณ."], ["399", "ศุภกร เป."], ["400", "สกุลกาญจน์ อ."], ["401", "อานนท์ บ."], ["405", "ธนัญญา ศ."], ["407", "นงพร ส."], ["410", "เบญญภา ช."], ["412", "ปัณฑิตา เต."], ["414", "เมธาสิทธิ์ ห."], ["420", "นันทวัฒน์ น."]]}
 };
 const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const MONFULL=["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -426,7 +474,8 @@ function renderAtt(){
     body.innerHTML=`<tr class="empty"><td colspan="5">The participant list and CPD results for ${MONFULL[d.getMonth()]} ${d.getFullYear()} will appear here after the session. <span class="soon">Coming soon</span></td></tr>`;
     return;
   }
-  const rows=[...a.rows].sort((x,y)=>Number(x[0])-Number(y[0]));
+  const idn=v=>v==="N/A"?Infinity:Number(v);
+  const rows=[...a.rows].sort((x,y)=>idn(x[0])-idn(y[0])||x[1].localeCompare(y[1],"th"));
   info.innerHTML=`<div class="eyebrow">${label}${a.series?` · ${a.series} series`:""}</div><div class="tt">${esc(a.title)}</div><div class="sp"><b>${esc(a.speaker)}</b><br>${esc(a.org)}</div>`;
   setStat("stP",String(rows.length));
   if(a.cpd){setStat("stC",String(rows.filter(r=>r[2]).length));}
@@ -484,12 +533,42 @@ function renderRec(){
   const q=recQ.trim().toLowerCase();
   const rows=ALLREC.filter(r=>(recSeries==="all"||seriesOf(r.date)===recSeries)&&(!q||(r.topic+" "+r.speakers.join(" ")+" "+(r.note||"")).toLowerCase().includes(q)));
   const groups=SERIES.map(s=>[s,rows.filter(r=>seriesOf(r.date)===s)]).filter(g=>g[1].length);
-  document.getElementById("recList").innerHTML=groups.length?groups.map(([s,list])=>`<section class="series"><h3>${s} series <small>${list.length} presentation${list.length>1?"s":""}</small></h3><div class="rec-cards">${list.map(r=>{const d=parse(r.date);const t=REC_TEAM[r.team];const img=r.same?null:posterOf(r.date);return `<article class="rec-card${img?" has-img":""}" style="--tc:var(${t?t.c:"--brand"})"><div class="rec-date"><div class="m">${MON[d.getMonth()]}</div><div class="d mono">${String(d.getDate()).padStart(2,"0")}</div><div class="m">${d.getFullYear()}</div></div><div class="rec-body"><div class="rec-meta">${t?`<span class="rec-team"><span class="dot" style="--c:var(${t.c})"></span>${esc(t.name)}</span>`:""}${r.ext?`<span class="rec-tag">External speaker</span>`:""}${r.online?`<span class="rec-tag">Online only</span>`:""}</div><div class="rec-topic">${esc(r.topic)}</div><div class="rec-speakers">${r.speakers.map(p=>`<span>${esc(p)}</span>`).join("")}</div>${r.note?`<div class="privacy">${esc(r.note)}</div>`:""}${r.video&&!r.same?`<a class="rec-video" href="${esc(r.video)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="5" fill="#e62117"/><path d="M10 8.5v7l6-3.5z" fill="#fff"/></svg>Watch recording on YouTube ↗</a>`:""}</div>${img?`<button type="button" class="rec-thumb" data-img="${r.date}" aria-label="View poster: ${esc(r.topic)}"><img src="${img}" alt="" loading="lazy"></button>`:""}</article>`}).join("")}</div></section>`).join(""):`<div class="rec-empty">No sessions match “${esc(recQ)}”. Try another word or choose All years.</div>`;
+  document.getElementById("recList").innerHTML=groups.length?groups.map(([s,list])=>`<section class="series"><h3>${s} series <small>${list.length} presentation${list.length>1?"s":""}</small></h3><div class="rec-cards">${list.map(r=>{const d=parse(r.date);const t=REC_TEAM[r.team];const img=r.same?null:posterOf(r.date);return `<article class="rec-card${img?" has-img":""}" style="--tc:var(${t?t.c:"--brand"})"><div class="rec-date"><div class="m">${MON[d.getMonth()]}</div><div class="d mono">${String(d.getDate()).padStart(2,"0")}</div><div class="m">${d.getFullYear()}</div></div><div class="rec-body"><div class="rec-meta">${t?`<span class="rec-team"><span class="dot" style="--c:var(${t.c})"></span>${esc(t.name)}</span>`:""}${r.ext?`<span class="rec-tag">External speaker</span>`:""}${r.online?`<span class="rec-tag">Online only</span>`:""}</div><div class="rec-topic">${esc(r.topic)}</div><div class="rec-speakers">${r.speakers.map(p=>`<span>${esc(p)}</span>`).join("")}</div>${r.note?`<div class="privacy">${esc(r.note)}</div>`:""}${ATTENDANCE[r.date]&&!r.same?`<a class="rec-att" href="#attendance" data-att="${r.date}">${ATTENDANCE[r.date].rows.length} participants · see list</a>`:""}${r.video&&!r.same?`<a class="rec-video" href="${esc(r.video)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="5" fill="#e62117"/><path d="M10 8.5v7l6-3.5z" fill="#fff"/></svg>Watch recording on YouTube ↗</a>`:""}</div>${img?`<button type="button" class="rec-thumb" data-img="${r.date}" aria-label="View poster: ${esc(r.topic)}"><img src="${img}" alt="" loading="lazy"></button>`:""}</article>`}).join("")}</div></section>`).join(""):`<div class="rec-empty">No sessions match “${esc(recQ)}”. Try another word or choose All years.</div>`;
 }
 document.getElementById("recChips").onclick=e=>{const b=e.target.closest(".chip");if(!b)return;recSeries=b.dataset.s;renderRecChips();renderRec()};
 document.getElementById("recSearch").oninput=e=>{recQ=e.target.value;renderRec()};
 renderRecChips();renderRec();
-document.getElementById("recList").addEventListener("click",e=>{const b=e.target.closest(".rec-thumb");if(!b)return;const im=document.getElementById("lbImg");im.src=POSTER[b.dataset.img];im.alt=b.getAttribute("aria-label").replace("View poster: ","Session poster: ");document.getElementById("lightbox").hidden=false;document.getElementById("lbClose").focus()});
+
+/* ===== Satisfaction: average scores per session (1–5), worked out from the survey responses ===== */
+const SATISFACTION = [{"date": "2023-10-11", "n": 30, "p": 4.07, "m": 4.2}, {"date": "2023-11-08", "n": 33, "p": 4.18, "m": 4.15}, {"date": "2023-12-13", "n": 16, "p": 4.0, "m": 4.06}, {"date": "2024-02-14", "n": 63, "p": 4.41, "m": 4.44}, {"date": "2024-03-13", "n": 33, "p": 4.39, "m": 4.42}, {"date": "2024-04-10", "n": 38, "p": 4.45, "m": 4.55}, {"date": "2024-05-08", "n": 10, "p": 4.7, "m": 4.7}, {"date": "2024-06-12", "n": 34, "p": 4.53, "m": 4.65}, {"date": "2024-07-10", "n": 10, "p": 4.4, "m": 4.7}, {"date": "2024-08-14", "n": 24, "p": 4.54, "m": 4.58}, {"date": "2024-09-11", "n": 6, "p": 4.5, "m": 4.67}, {"date": "2024-11-13", "n": 50, "p": 4.52, "m": 4.5}, {"date": "2025-01-08", "n": 32, "p": 4.38, "m": 4.34}, {"date": "2025-03-12", "n": 14, "p": 4.5, "m": 4.64}, {"date": "2025-04-09", "n": 34, "p": 4.32, "m": 4.47}, {"date": "2025-06-11", "n": 6, "p": 4.83, "m": 4.83}, {"date": "2025-08-13", "n": 8, "p": 4.75, "m": 4.75}, {"date": "2025-11-12", "n": 76, "p": 4.68, "m": 4.74}, {"date": "2026-01-14", "n": 58, "p": 4.62, "m": 4.76}, {"date": "2026-02-11", "n": 77, "p": 4.68, "m": 4.68}, {"date": "2026-03-11", "n": 63, "p": 4.52, "m": 4.48}, {"date": "2026-04-08", "n": 49, "p": 4.59, "m": 4.63}, {"date": "2026-06-10", "n": 62, "p": 4.65, "m": 4.68}, {"date": "2026-07-08", "n": 57, "p": 4.56, "m": 4.63}, {"date": "2026-09-09", "n": 22, "p": 4.45, "m": 4.59}, {"date": "2026-10-14", "n": 46, "p": 4.63, "m": 4.63}];
+const topicOn = ds=>{const r=ALLREC.filter(x=>x.date===ds);return r.length?r.map(x=>x.topic).join(" · "):null};
+const satSeries=[...new Set(SATISFACTION.map(s=>seriesOf(s.date)))].sort().reverse();
+let satSel="all";
+(function(){
+  const last=[...SATISFACTION].sort((a,b)=>b.date.localeCompare(a.date))[0], ld=parse(last.date);
+  const cur=SATISFACTION.filter(s=>seriesOf(s.date)===seriesOf(last.date)&&s.date!==last.date).length?seriesOf(last.date):satSeries[1];
+  const prev=SATISFACTION.filter(s=>seriesOf(s.date)==="2025–2026");
+  const w=(L,k)=>(L.reduce((t,s)=>t+s[k]*s.n,0)/L.reduce((t,s)=>t+s.n,0)).toFixed(2);
+  const total=SATISFACTION.reduce((t,s)=>t+s.n,0);
+  document.getElementById("satStats").innerHTML=
+    `<div class="stat"><div class="v mono">${last.p.toFixed(2)}</div><div class="k">Latest session · ${ld.getDate()} ${MON[ld.getMonth()]} ${ld.getFullYear()} · <b>${last.n}</b> responses</div></div>`+
+    `<div class="stat"><div class="v mono">${w(prev,"p")}</div><div class="k">2025–2026 series average · ${prev.length} sessions</div></div>`+
+    `<div class="stat"><div class="v mono">${total.toLocaleString()}</div><div class="k">Responses since Oct 2023</div></div>`;
+})();
+function renderSatChips(){document.getElementById("satChips").innerHTML=[["all","All years"],...satSeries.map(s=>[s,s])].map(([k,l])=>`<button class="chip" data-s="${k}" aria-pressed="${satSel===k}">${l}</button>`).join("")}
+const bar=(v,c,lbl)=>`<div class="sat-bar" title="${lbl}: ${v.toFixed(2)} / 5"><div class="sat-track"><span class="${c}" style="width:${(v/5*100).toFixed(1)}%"></span></div><b>${v.toFixed(2)}</b></div>`;
+function renderSat(){
+  document.getElementById("satList").innerHTML=satSeries.filter(s=>satSel==="all"||s===satSel).map(s=>{
+    const L=SATISFACTION.filter(x=>seriesOf(x.date)===s).sort((a,b)=>b.date.localeCompare(a.date));
+    return `<section class="sat-series"><h3>${s} series <small>${L.length} session${L.length>1?"s":""}</small></h3>${L.map(x=>{const d=parse(x.date),t=topicOn(x.date);
+      return `<article class="sat-row"><div class="sat-when">${d.getDate()} ${MON[d.getMonth()]} ${d.getFullYear()}<small>${x.n} responses</small></div>
+        <div class="sat-topic${t?"":" none"}">${t?esc(t):"Topic not in the C&amp;J Record yet"}</div>
+        <div class="sat-bars">${bar(x.p,"bar-p","Presentation & activity")}${bar(x.m,"bar-m","C&J management")}</div></article>`}).join("")}</section>`;
+  }).join("");
+}
+document.getElementById("satChips").onclick=e=>{const b=e.target.closest(".chip");if(!b)return;satSel=b.dataset.s;renderSatChips();renderSat()};
+renderSatChips();renderSat();
+document.getElementById("recList").addEventListener("click",e=>{const at=e.target.closest(".rec-att");if(at){e.preventDefault();sel=at.dataset.att;try{localStorage.setItem("cj-att2",sel)}catch(err){}renderAtt();showPage("att");try{history.replaceState(null,"","#attendance")}catch(err){}window.scrollTo({top:0});return}const b=e.target.closest(".rec-thumb");if(!b)return;const im=document.getElementById("lbImg");im.src=POSTER[b.dataset.img];im.alt=b.getAttribute("aria-label").replace("View poster: ","Session poster: ");document.getElementById("lightbox").hidden=false;document.getElementById("lbClose").focus()});
 const closeLb=()=>{document.getElementById("lightbox").hidden=true};
 document.getElementById("lbClose").onclick=closeLb;
 document.getElementById("lightbox").addEventListener("click",e=>{if(e.target.id==="lightbox")closeLb()});
@@ -497,10 +576,10 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLb()});
 
 /* Page tabs (deep link: add #record to the address) */
 function showPage(p){
-  ["conf","att","record"].forEach(k=>{const on=k===p;document.getElementById("page-"+k).hidden=!on;document.getElementById("tab-"+k).setAttribute("aria-selected",on)});
+  ["conf","att","record","sat"].forEach(k=>{const on=k===p;document.getElementById("page-"+k).hidden=!on;document.getElementById("tab-"+k).setAttribute("aria-selected",on)});
 }
-document.querySelector(".tabs").onclick=e=>{const b=e.target.closest(".tab");if(!b)return;showPage(b.dataset.page);try{history.replaceState(null,"",b.dataset.page==="conf"?location.pathname+location.search:(b.dataset.page==="att"?"#attendance":"#"+b.dataset.page))}catch(err){}};
-showPage({"#record":"record","#attendance":"att","#att":"att"}[location.hash]||"conf");
+document.querySelector(".tabs").onclick=e=>{const b=e.target.closest(".tab");if(!b)return;showPage(b.dataset.page);try{history.replaceState(null,"",b.dataset.page==="conf"?location.pathname+location.search:(b.dataset.page==="att"?"#attendance":b.dataset.page==="sat"?"#satisfaction":"#"+b.dataset.page))}catch(err){}};
+showPage({"#record":"record","#attendance":"att","#att":"att","#satisfaction":"sat"}[location.hash]||"conf");
 
 document.getElementById("teamlist").innerHTML=Object.values(TEAMS).map(t=>`<li><span class="dot" style="--c:var(${t.c})"></span><span><b>${t.name}</b><br>${t.th}</span></li>`).join("");
 </script>
