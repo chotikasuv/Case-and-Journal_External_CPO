@@ -468,6 +468,15 @@ header.hero::after{background:var(--hb-circle)}
 .hero .hello{background:#2a357a;color:#fff}.hero .hello::before{border-right-color:#2a357a}
 .hero .polaroid{box-shadow:0 10px 22px rgba(42,53,122,.22)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hbtn:not(.ghost){background:#f2a50c;color:#1c2340}}
+
+/* hero: placeholder when the month's poster isn't out yet */
+.polaroid .ph{aspect-ratio:1;display:grid;place-content:center;justify-items:center;gap:8px;text-align:center;padding:22px;
+  background:radial-gradient(rgba(42,53,122,.12) 1.2px,transparent 1.3px) 0 0/16px 16px,color-mix(in srgb,var(--c,#5b5bf5) 16%,#fff)}
+.polaroid .ph img{width:68px;height:68px;object-fit:contain;background:#fff;border-radius:14px;padding:5px;box-shadow:0 2px 5px rgba(42,53,122,.2);rotate:-4deg}
+.polaroid .ph .m{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#5a6090}
+.polaroid .ph b{font-family:var(--display);font-weight:800;font-size:1.5rem;line-height:1.1;color:#2a357a;text-wrap:balance}
+@media (max-width:420px){.polaroid .ph{padding:14px;gap:6px}.polaroid .ph b{font-size:1.2rem}.polaroid .ph img{width:52px;height:52px}}
+.polaroid .ph .soon{white-space:nowrap;letter-spacing:.02em;font-size:.74rem;font-weight:700;color:#f2700a;background:#fff;border-radius:999px;padding:3px 12px}
 </style>
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -757,7 +766,9 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
   const d=parse(next.date),t=TEAMS[next.team];
   reg.textContent=`Register for ${d.getDate()} ${MON[d.getMonth()]} ↗`;
   const art=document.getElementById("heroArt");
-  if(next.art){art.src=next.art;art.alt=`${MONFULL[d.getMonth()]} ${d.getFullYear()} poster`}else{document.getElementById("heroPolaroid").classList.add("noart");art.remove()}
+  if(next.art){art.src=next.art;art.alt=`${MONFULL[d.getMonth()]} ${d.getFullYear()} poster`}else{const pol=document.getElementById("heroPolaroid");pol.classList.add("noart");const ph=document.createElement("div");ph.className="ph";ph.style.setProperty("--c",`var(${t.c})`);
+    const tp=next.talks&&next.talks[0]&&next.talks[0].topic;
+    ph.innerHTML=`<img src="${document.querySelector('.hero .logo img').src}" alt=""><span class="m">${MONFULL[d.getMonth()]} ${d.getFullYear()}</span><b>${tp?tp:t.name}</b><span class="soon">Poster coming soon</span>`;art.replaceWith(ph)}
   document.getElementById("heroCap").textContent=`${MONFULL[d.getMonth()]} ${d.getFullYear()} · ${t.name}`;
   const days=Math.round((d-today)/864e5);
   const cd=days===0?"Today":days===1?"Tomorrow":`In ${days} days`;
